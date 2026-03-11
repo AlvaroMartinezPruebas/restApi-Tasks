@@ -1,0 +1,29 @@
+### find all tasks
+GET http://localhost:3000/api/tasks
+
+### find all terminadas
+GET http://localhost:3000/api/tasks/termin
+
+### create task
+POST  http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+    "titulo" : "tar11",
+    "descripcion":"tarea 11",
+    "terminado": true
+}
+
+### find one
+GET http://localhost:3000/api/tasks/623df750981483229147f803
+
+### delete task
+DELETE http://localhost:3000/api/tasks/622a3fe39eb9a6568682aaa4
+
+### update task
+put http://localhost:3000/api/tasks/623df750981483229147f803
+Content-Type: application/json
+
+{
+  "descripcion": "tarea 9 actualizada 111"
+}

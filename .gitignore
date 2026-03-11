@@ -1,0 +1,3 @@
+#archivos q no se subiran a git
+node_modules/.
+.env
