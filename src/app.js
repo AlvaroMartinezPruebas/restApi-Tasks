@@ -2,6 +2,8 @@
 // es invocado desde index.js
 //se modificó el 16 de marzo 2026, para una mejor organización del código
 
+
+//seccion de imports
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
@@ -26,7 +28,7 @@ app.get('/', (req, res) => {
    res.json({ mensaje: "Hola mundo" })
 });
 
-//indico q tome mis routers del modulo TaskRoutes, desde la ruta api/tasks
+//indico que tome mis routers del modulo TaskRoutes, desde la ruta api/tasks
 app.use('/api/tasks', TasksRoutes);
 
 export default app;
