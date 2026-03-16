@@ -1,4 +1,7 @@
 //const express = require('express'); si usamos babel ya no usamos esta sintaxis
+// es invocado desde index.js
+//se modificó el 16 de marzo 2026, para una mejor organización del código
+
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
@@ -7,10 +10,10 @@ import TasksRoutes from './routes/tasks.routes.js';
 //crea el servidor
 const app = express();
 
-//settings
+//seccion settings, el puerto de default sera el 3000
 app.set('port', process.env.port || 3000);
 
-//middleware
+//seccion middleware
 const corsOptions={};
 app.use(cors(corsOptions));
 app.use(morgan('dev'));
