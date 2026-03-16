@@ -1,0 +1,24 @@
+name: Validacion de Node         # El nombre que verás en la pestaña Actions
+
+on: 
+  push:                          # Se activa cada vez que subes código
+  pull_request:                  # Se activa cuando abres un PR
+
+jobs:
+  verificar-proyecto:            # Nombre de la tarea
+    runs-on: ubuntu-latest       # Usará una computadora con Linux de GitHub
+
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4 # Este paso "clona" tu código dentro del robot
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'      # Instala la versión 20 de Node
+
+      - name: Instalar dependencias
+        run: npm install          # Instala lo que diga tu package.json
+
+      - name: Ejecutar saludo
+        run: echo "¡Hola BBVA! El robot ha terminado de instalar todo correctamente."
