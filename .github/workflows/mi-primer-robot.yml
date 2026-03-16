@@ -1,4 +1,4 @@
-name: Validacion de Node con Artifacts
+name: Prueba de Fallo con Copilot
 
 on: [push]
 
@@ -10,15 +10,14 @@ jobs:
       - name: Descargar codigo
         uses: actions/checkout@v4
 
-      - name: Crear un reporte de prueba
-        run: |
-          echo "Reporte de ejecucion" > reporte.txt
-          echo "Fecha: $(date)" >> reporte.txt
-          echo "Estado: Exitoso" >> reporte.txt
-        # Aquí estamos creando un archivo real dentro del robot
-
-      - name: Guardar el reporte como Artifact
-        uses: actions/upload-artifact@v4
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
         with:
-          name: mi-reporte-bbva       # Nombre del paquete descargable
-          path: reporte.txt           # Qué archivo queremos guardar
+          node-version: '20'
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Ejecutar pruebas de Node
+        # Este comando va a fallar porque por defecto Node pone un error si no hay tests
+        run: npm test
