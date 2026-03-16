@@ -1,5 +1,6 @@
 //const express = require('express'); si usamos babel ya no usamos esta sintaxis
 // es invocado desde index.js
+//se modificó el 16 de marzo 2026, para una mejor organización del código
 
 import express from "express";
 import cors from "cors";
