@@ -1,24 +1,24 @@
-name: Validacion de Node         # El nombre que verás en la pestaña Actions
+name: Validacion de Node con Artifacts
 
-on: 
-  push:                          # Se activa cada vez que subes código
-  pull_request:                  # Se activa cuando abres un PR
+on: [push]
 
 jobs:
-  verificar-proyecto:            # Nombre de la tarea
-    runs-on: ubuntu-latest       # Usará una computadora con Linux de GitHub
+  verificar-proyecto:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Descargar codigo
-        uses: actions/checkout@v4 # Este paso "clona" tu código dentro del robot
+        uses: actions/checkout@v4
 
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
+      - name: Crear un reporte de prueba
+        run: |
+          echo "Reporte de ejecucion" > reporte.txt
+          echo "Fecha: $(date)" >> reporte.txt
+          echo "Estado: Exitoso" >> reporte.txt
+        # Aquí estamos creando un archivo real dentro del robot
+
+      - name: Guardar el reporte como Artifact
+        uses: actions/upload-artifact@v4
         with:
-          node-version: '20'      # Instala la versión 20 de Node
-
-      - name: Instalar dependencias
-        run: npm install          # Instala lo que diga tu package.json
-
-      - name: Ejecutar saludo
-        run: echo "¡Hola BBVA! El robot ha terminado de instalar todo correctamente."
+          name: mi-reporte-bbva       # Nombre del paquete descargable
+          path: reporte.txt           # Qué archivo queremos guardar
